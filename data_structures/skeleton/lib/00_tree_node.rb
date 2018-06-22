@@ -35,7 +35,40 @@ class PolyTreeNode
     end
     child_node.parent = nil
     @children.delete(child_node)
-    
   end
   
+  def inspect
+    puts "<PolyTreeNode: #{self.object_id}, @value = #{value}"
+  end
+  
+  def dfs(target_value)
+    return self if self.value == target_value
+    
+    @children.each do |child|
+      sub_search = child.dfs(target_value)
+      return sub_search unless sub_search.nil?
+    end
+    return nil
+    # p self
+    # return self if self.value == target_value
+    # @children.each do |child|
+    #   p self
+    #   return child if child.value == target_value
+    #   if child.children != []
+    #     child.dfs(target_value)
+    #   else
+    #     return child if child.value == target_value
+    #   end
+    # end
+    # nil
+  end
 end
+
+
+
+
+
+
+
+
+
