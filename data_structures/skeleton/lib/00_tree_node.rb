@@ -49,10 +49,9 @@ class PolyTreeNode
       return sub_search unless sub_search.nil?
     end
     return nil
-    # p self
+    
     # return self if self.value == target_value
     # @children.each do |child|
-    #   p self
     #   return child if child.value == target_value
     #   if child.children != []
     #     child.dfs(target_value)
@@ -62,6 +61,18 @@ class PolyTreeNode
     # end
     # nil
   end
+  
+  def bfs(target_value)
+    queue = [self]
+    
+    until queue.empty?
+      node = queue.shift
+      return node if node.value == target_value
+      queue += node.children
+    end
+    nil
+  end
+  
 end
 
 
