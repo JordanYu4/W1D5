@@ -8,8 +8,15 @@ class KnightPathFinder
     @visited_positions = [start_pos]
   end
   
-  def build_move_tree(pos)
-    move_tree = PolyTreeNode.new(pos)
+  def build_move_tree(target_pos)
+    move_tree = PolyTreeNode.new(@start_pos)
+    # queue = [move_tree]
+    # loop 
+      # break if node == target_pos 
+      # moves = new_move_positions(@start_pos)
+      # moves.each { |move| move_tree.add_child(move) }
+      
+    
     move_tree
   end
   
@@ -17,7 +24,6 @@ class KnightPathFinder
     row, col = pos
     return row.between?(0, 7) && col.between?(0, 7)
   end
-  
   
   def new_move_positions(pos)
     row, col = pos
